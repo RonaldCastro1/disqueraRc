@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="https://wwww.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{css/materialize.css}">
+    <title>Disquera Rc</title>
+</head>
+<body>
+    <nav class="grey darken-1">
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo right">Disquera R'C</a>
+          <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <li><a th:href="@{/index}">Inicio</a></li>
+            <li class="active"><a th:href="@{/listar}">Generos</a></li>
+            <li><a th:href="@{/registrar}">Nuevo Genero</a></li>
+          </ul>
+        </div>
+      </nav>
+    <div class="container-fluid">
+        <p th:text="${genero.id_genero}"></p>
+        <p th:text="${genero.nombre_genero}"></p>
+        <p th:text="${genero.estado_genero}"></p>
+        <span class="yellow-text" th:if="${genero.estado_genero==true}">Activo</span>
+        <span class="red-text" th:if="${genero.estado_genero==false}">Inactivo</span>
+    </div>
+</body>
+</html>

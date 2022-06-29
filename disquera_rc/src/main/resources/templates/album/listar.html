@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/mobius1/vanilla-Datatables@latest/vanilla-dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <title>Disquera Rc</title>
+</head>
+
+<body>
+    <nav class="grey darken-1">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo right">Disquera R'C</a>
+            <ul id="nav-mobile" class="left hide-on-med-and-down">
+                <li><a th:href="@{/Index}"><i class="large material-icons left">home</i> Inicio</a></li>
+                <li class="active" a th:href="@{/album/listar}"><i class="large material-icons left">list</i>Albumes</a>
+                </li>
+                <li><a th:href="@{/album/registrar}"><i class="large material-icons left">add</i>Nuevo Album</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <center>
+            <h1>Albumes</h1>
+        </center>
+        <hr>
+        <table class="striped">
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Estado</th>
+                <th>Año</th>
+                <th>Id Artista</th>
+                <th>Id Genero</th>
+                <th>Cambiar estado</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+            <tbody>
+                <tr th:if="${albumes.size()>0}" th:each="a:${albumes}">
+                    <td th:text="${a.id_album}"></td>
+                    <td th:text="${a.nombre_album}"></td>
+                    <td th:text="${a.ano_album"></td>
+                    <td th:if="${a.estado_album==true}">
+                        <span class="green-text">Activo</span>
+                    </td>
+                    <td th:if="${a.estado_album==false}">
+                        <span class="red-text">Inactivo</span>
+                    </td>
+                    <td th:each="${a.id_artista}"></td>
+                    <td th:each="${a.id_genero}"></td>
+                    <td th:if="${a.estado_album==true}">
+                        <a rol="button" class="red-text"> Inactivar </a>
+                    </td>
+                    <td th:if="${a.estado_album==false}">
+                        <a role="button" class="green-text"> Activar </a>
+                    </td>
+                    <td>
+                        <a role="button" class="yellow-text" th:href="@{/album/ver/}+${g.id_album}"><button cl></button><i class="large material-icons">edit</i></a>
+                    </td>
+                    <td>
+                        <a role="button" class="red-text" th:href="@{/album/delete/} + ${g.id_album}" onclick="return confirm('Quieres eliminar este genero?');"><i class="large material-icons">delete</i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        var datat = document.querySelector("#datat");
+        var dataTable = new DataTable("#datat", {
+            perPage: 10,
+            labels: {
+                placeholder: "Busca por un campo...",
+                perPage: "{select} registros por página",
+                noRows: "No se encontraron registros",
+                info: "Mostrando {start} a {end} de {rows} registros",
+            }
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+</body>
+
+</html>

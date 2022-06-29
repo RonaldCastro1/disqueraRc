@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Disquera Rc</title>
+</head>
+
+<body>
+    <nav class="grey darken-1">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo right">Disquera R'C</a>
+            <ul id="nav-mobile" class="left hide-on-med-and-down">
+                <li class="active"><a th:href="@{/Index}"><i class="large material-icons left">home</i> Inicio</a></li>
+                <li><a th:href="@{/genero/listar}"><i class="large material-icons left">list</i>Generos</a></li>
+                <li><a th:href="@{/genero/registrar}"><i class="large material-icons left">add</i>Nuevo Genero</a></li>
+                <li><a th:href="@{/album/listar}"><i class="large material-icons left">list</i>Albumes</a></li>
+                <li><a th:href="@{/album/registrar}"><i class="large material-icons left">add</i>Nuevo Album</a></li>
+                <li><a th:href="@{/cancion/listar}"><i class="large material-icons left">list</i>Canciones</a></li>
+                <li><a th:href="@{/cancion/registrar}"><i class="large material-icons left">add</i>Nueva Cancion</a></li>
+            </ul>
+        </div>
+    </nav>
+    <center>
+    </center>
+
+</body>
+
+</html>
